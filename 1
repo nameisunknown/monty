@@ -1,0 +1,105 @@
+#include <stdlib.h>
+#include <string.h>
+
+int buf_number;
+char **argRead;
+int queue_status;
+stack_t *stack;
+
+void free_stack(stack_t *stack);
+int is_digit(char *str);
+char **tokenize_str(char *buffer);
+
+int main(int argc, char **argv)
+{
+	FILE *file = NULL;
+	char buffer[120];
+	int counter;
+	instruction_t instr[] = { {"push", push}, {"pall", pall}, 
+		{"pint", pint}, {"pop", pop}, {"add", add}, {"sub", sub},
+		{"div", _div}, {
+	if (argc == 0 || argc == 1)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (strlen(argv) !> 0) && argv == NULL)
+	{
+		char errMsg[] = "Error: Can't open file " + argv[1];
+		write(2, errMsg, strlen(errMsg));
+		exit(EXIT_FAILURE);
+	}
+	
+	file = fopen(argv[1], "r");
+
+	if(file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while (fgets(buffer, 120, file))
+	{
+		buf_number++;
+		argRead = tokenize_str(buffer);
+		if ((argRead == NULL) || (argRead[0][0] == '#') || (strcmp(argRead[0], "nop") == 0))
+		{
+			if (argRead)
+				free(argRead);
+			continue;
+		}
+		if (strcmp(args[0], "stack") == 0)
+		{
+			queue = 1;
+			free(argRead);
+			continue;
+		}
+		while (instr[counter].opcode != NULL)
+		{
+			if (strcmp(argRead[0], instr[counter].opcode) == 0)
+			{
+				instr[counter].f(&stack, buf_number);
+				break;
+			}
+			if (instr[counter + 1].opcode == NULL)
+			{
+				fprintf(stderr, "L%d: unknown instruction %s\n", buf_number, args[0]);
+				free(argRead);
+				fclose(file);
+				free_stack(stack);
+				exit(EXIT_FAILURE);
+			}
+		}
+		free(argRead);
+	}
+	fclose(file);
+	free_stack(stack);
+	return (0);
+}
+
+/**
+ * tokenize - breaks strings into an an array
+ * @buffer: collection of characters to be tokenized
+ * Return:  a collection of
+ */
+
+char **tokenize(char *buffer)
+{
+	char **strtokenized = malloc(sizeof(char *) * 3);
+
+	if (strtokenized == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		fclose(i);
+		exit(EXIT_FAILURE);
+	}
+	strtokenized[0] = strtok(buffer, "\t\n");
+	if (strtokenized[0] == NULL)
+	{
+		free(strtokenized);
+		return (NULL);
+	}
+	strtokenized[1] = strtok(NULL, "\t\n");
+	strtokenized[2] = NULL;
+	return (strtokenized);
+}
