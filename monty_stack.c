@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 			free(argRead);
 			continue;
 		}
-		if (strcmp(args[0], "stack") == 0)
+		if (strcmp(argRead[0], "stack") == 0)
 		{
 			queue_status = 0;
 			free(argRead);
