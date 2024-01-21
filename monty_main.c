@@ -1,5 +1,11 @@
 #include "monty.h"
 
+int buf_number = 0;
+char **argRead = NULL;
+int queue_status = 0;
+stack_t *stack = NULL;
+FILE *file;
+
 /**
  * main - Entry to main program
  * @argc: var to hold the count of arg entered
@@ -9,11 +15,6 @@
 
 int main(int argc, char **argv)
 {
-	int buf_number = 0;
-	char **argRead = NULL;
-	int queue_status = 0;
-	stack_t *stack = NULL;
-	FILE *file;
 	char buffer[120];
 	int counter;
 	instruction_t instr[] = {
