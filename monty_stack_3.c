@@ -42,7 +42,8 @@ void mod(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pchar - pchar prints the char at the top of the stack, followed by a new line.
+ * pchar - pchar prints the char at the top of the stack,
+ * followed by a new line.
  * @stack: is a double pointer pointing to the stack
  * @line_number: Is the current line number of the opcode
  * Return: void
@@ -91,7 +92,8 @@ void pstr(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotl - This rotates the stack to the top which means that top element becomes
+ * rotl - This rotates the stack to the top
+ * which means that top element becomes
  * the last one and the second top element of the stack becomes the first one
  *
  * @stack: Is a pointer to the pointer to the stack
@@ -125,7 +127,8 @@ void rotl(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotr - This rotates the stack to the bottom which means that last element becomes
+ * rotr - This rotates the stack to the bottomi
+ * which means that last element becomes
  * the top element of the stack
  *
  * @stack: Is a pointer to the pointer to the stack
